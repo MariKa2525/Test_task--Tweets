@@ -2,8 +2,23 @@ import css from './UserCard.module.css';
 import Foto from '../../images/picture.png';
 import Avatar from '../../images/boy.png';
 import Logo from '../../images/Logo.png';
+import { useState } from 'react';
 
 export const UserCard = () => {
+  const [follower, setFollower] = useState(100500);
+  const [name, setName] = useState('Follow');
+
+  const addFollowers = evt => {
+    setFollower(follower + 1);
+    setName('Following');
+    evt.currentTarget.style.backgroundColor = '#5CD3A8';
+    if (name === 'Following') {
+      setFollower(follower - 1);
+      setName('Follow');
+      evt.currentTarget.style.backgroundColor = '#ebd8ff';
+    }
+  };
+
   return (
     <div>
       <div className={css.user}>
@@ -20,11 +35,11 @@ export const UserCard = () => {
 
           <p className={css.tweets}>777 Tweets</p>
           <div className={css.followers}>
-            <span className={css.followersNumber}>100,500</span>
+            <span className={css.followersNumber}>{follower}</span>
             <p className={css.followersText}>Followers</p>
           </div>
-          <button className={css.button} type="button">
-            Follow
+          <button className={css.button} type="button" onClick={addFollowers}>
+            {name}
           </button>
         </div>
       </div>
