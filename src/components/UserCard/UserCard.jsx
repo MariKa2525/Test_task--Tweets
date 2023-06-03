@@ -35,7 +35,9 @@ export const UserCard = () => {
 
           <p className={css.tweets}>777 Tweets</p>
           <div className={css.followers}>
-            <span className={css.followersNumber}>{follower}</span>
+            <span className={css.followersNumber}>
+              {follower.toLocaleString('en-US')}
+            </span>
             <p className={css.followersText}>Followers</p>
           </div>
           <button className={css.button} type="button" onClick={addFollowers}>
