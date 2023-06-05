@@ -1,9 +1,17 @@
-import { UserCard } from './UserCard/UserCard';
+import { Route, Routes } from 'react-router-dom';
+
+import HomePage from 'pages/HomePage';
+import TweetsPage from 'pages/TweetsPage';
+import { Layout } from './Layout/Layout';
 
 export const App = () => {
   return (
-    <>
-      <UserCard />
-    </>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route path="tweets" element={<TweetsPage />} />
+        <Route path="*" element={<TweetsPage />} />
+      </Route>
+    </Routes>
   );
 };
